@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ─── CURSOR ─── -->
+  <div class="cursor"></div>
+  <div class="cursor-trail"></div>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero" id="home">
+    <canvas id="particles"></canvas>
+    <div class="hero-content">
+      <span class="hero-eyebrow">Frontend Developer & Creative</span>
+      <h1 class="hero-title">
+        <span class="line">Building digital</span>
+        <span class="line accent">experiences.</span>
+      </h1>
+      <p class="hero-sub">Turning ideas into clean, modern web interfaces.</p>
+      <button class="btn-hero" onclick="openLogin()">
+        <span>Enter Portfolio</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+    <div class="hero-scroll-hint">scroll</div>
+  </section>
+
+  <!-- ─── LOGIN ─── -->
+  <div id="login" class="page hidden">
+    <div class="login-wrap">
+      <div class="login-card">
+        <div class="login-logo">
+          <span class="dot"></span>Portfolio
+        </div>
+        <h2>Welcome back</h2>
+        <p class="login-sub">Sign in to view the full portfolio</p>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" id="email" placeholder="you@example.com" />
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" id="password" placeholder="••••••••" />
+        </div>
+        <p id="message" class="error-msg"></p>
+        <button class="btn-primary" onclick="login()">Sign In</button>
+        <button class="btn-ghost" onclick="backToHome()">← Go Back</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── DASHBOARD ─── -->
+  <div id="dashboard" class="page hidden">
+
+    <!-- NAV -->
+    <nav class="nav" id="nav">
+      <div class="nav-brand"><span class="dot"></span>Portfolio</div>
+      <div class="nav-links">
+        <a href="#about" onclick="scrollTo('about')">About</a>
+        <a href="#education" onclick="scrollTo('education')">Education</a>
+        <a href="#projects" onclick="scrollTo('projects')">Projects</a>
+        <a href="#contact" onclick="scrollTo('contact')">Contact</a>
+      </div>
+      <button class="btn-outline" onclick="logout()">Logout</button>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <div class="mobile-menu hidden" id="mobileMenu">
+      <a href="#about" onclick="scrollTo('about');toggleMenu()">About</a>
+      <a href="#education" onclick="scrollTo('education');toggleMenu()">Education</a>
+      <a href="#projects" onclick="scrollTo('projects');toggleMenu()">Projects</a>
+      <a href="#contact" onclick="scrollTo('contact');toggleMenu()">Contact</a>
+    </div>
+
+    <!-- WELCOME BANNER -->
+    <section class="welcome-banner">
+      <div class="welcome-inner">
+        <div class="welcome-text">
+          <span class="tag">Software Engineer</span>
+          <h1>Hi, I'm <span class="name-highlight">Mah Noor Fatima</span></h1>
+          <p>I build responsive, modern web experiences with a focus on clean design and smooth interactions.</p>
+          <div class="skills-pills">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Generative AI</span><span>UI/UX</span>
+          </div>
+        </div>
+        <div class="welcome-avatar">
+          <div class="avatar-ring">
+            <div class="avatar-inner">MNF</div>
+          </div>
+          <div class="floating-badge top">💻 Dev</div>
+          <div class="floating-badge bottom">🎨 Design</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="section-label">01 — About</div>
+      <h2 class="section-title">Who I Am</h2>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>I'm a passionate frontend developer who loves building modern, user-friendly websites. I have hands-on experience with HTML, CSS, and JavaScript, and I'm always eager to learn new technologies.</p>
+          <p>Currently exploring Web Development and AI/ML integration in real-world applications.</p>
+        </div>
+        <div class="stats-grid reveal">
+          <div class="stat-card">
+            <span class="stat-num" data-target="5">0</span>
+            <span class="stat-label">Projects Built</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num" data-target="4">0</span>
+            <span class="stat-label">Certifications</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num" data-target="2">0</span>
+            <span class="stat-label">Internships</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num" data-target="3">0</span>
+            <span class="stat-label">Years Learning</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="section alt" id="education">
+      <div class="section-label">02 — Education</div>
+      <h2 class="section-title">Academic Background</h2>
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-year">2020 – 2024</span>
+            <h3>Bachelor of Computer Science</h3>
+            <p>University of Agriculture, Faisalabad</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-year">2018 – 2020</span>
+            <h3>FSC Pre-Engineering</h3>
+            <p>Aspire Group Of Colleges, Samundri</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-label" style="margin-top:60px">Certifications</div>
+      <div class="cert-grid">
+        <div class="cert-card reveal">
+          <div class="cert-icon">🎨</div>
+          <h3>Graphic Designing</h3>
+          <p>Spark IT Institute, 2023</p>
+        </div>
+        <div class="cert-card reveal">
+          <div class="cert-icon">🤖</div>
+          <h3>Generative AI</h3>
+          <p>iCode Guru, 2025</p>
+        </div>
+        <div class="cert-card reveal">
+          <div class="cert-icon">💻</div>
+          <h3>Frontend Development Internship</h3>
+          <p>SyntecxHub</p>
+        </div>
+        <div class="cert-card reveal">
+          <div class="cert-icon">🧠</div>
+          <h3>Artificial Intelligence</h3>
+          <p>HexSoftwares Company</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <div class="section-label">03 — Projects</div>
+      <h2 class="section-title">Things I've Built</h2>
+      <div class="projects-grid">
+        <div class="project-card reveal" data-tilt>
+          <div class="project-num">01</div>
+          <h3>Coffee Caffee Landing Page</h3>
+          <p>Interactive and responsive coffee shop landing page with smooth animations.</p>
+          <div class="project-tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
+          <div class="project-arrow">→</div>
+        </div>
+        <div class="project-card reveal" data-tilt>
+          <div class="project-num">02</div>
+          <h3>Weather Dashboard</h3>
+          <p>Real-time weather information and forecasts using OpenWeather API.</p>
+          <div class="project-tags"><span>API</span><span>JavaScript</span></div>
+          <div class="project-arrow">→</div>
+        </div>
+        <div class="project-card reveal" data-tilt>
+          <div class="project-num">03</div>
+          <h3>Calculator App</h3>
+          <p>Fully functional calculator built with HTML, CSS, and JavaScript.</p>
+          <div class="project-tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
+          <div class="project-arrow">→</div>
+        </div>
+        <div class="project-card reveal" data-tilt>
+          <div class="project-num">04</div>
+          <h3>Employee Attendance System</h3>
+          <p>Online attendance tracking system for managing employee records.</p>
+          <div class="project-tags"><span>Web App</span><span>JavaScript</span></div>
+          <div class="project-arrow">→</div>
+        </div>
+        <div class="project-card reveal" data-tilt>
+          <div class="project-num">05</div>
+          <h3>Quiz App</h3>
+          <p>Interactive quiz application with multiple-choice questions and scoring.</p>
+          <div class="project-tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
+          <div class="project-arrow">→</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section alt" id="contact">
+      <div class="section-label">04 — Contact</div>
+      <h2 class="section-title">Let's Connect</h2>
+      <div class="contact-grid">
+        <a class="contact-card reveal" href="mailto:myemail@gmail.com">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <span class="contact-type">Email</span>
+            <p>myemail@gmail.com</p>
+          </div>
+          <span class="contact-arrow">↗</span>
+        </a>
+        <a class="contact-card reveal" href="tel:03000000000">
+          <div class="contact-icon">📞</div>
+          <div>
+            <span class="contact-type">Phone</span>
+            <p>0300-0000000</p>
+          </div>
+          <span class="contact-arrow">↗</span>
+        </a>
+        <a class="contact-card reveal" href="#">
+          <div class="contact-icon">💼</div>
+          <div>
+            <span class="contact-type">LinkedIn</span>
+            <p>View Profile</p>
+          </div>
+          <span class="contact-arrow">↗</span>
+        </a>
+        <a class="contact-card reveal" href="#">
+          <div class="contact-icon">🐙</div>
+          <div>
+            <span class="contact-type">GitHub</span>
+            <p>View Repos</p>
+          </div>
+          <span class="contact-arrow">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-brand"><span class="dot"></span> Mah Noor Fatima</div>
+        <p class="footer-copy">© 2026 — Built with passion & caffeine ☕</p>
+      </div>
+    </footer>
+
+  </div><!-- end dashboard -->
+
+  <script src="script.js"></script>
+</body>
+</html>
